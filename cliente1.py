@@ -7,6 +7,7 @@ PORT = 1100
 # ...
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as cliente:
     cliente.connect((HOST, PORT))
+    print("Você entrou no chat! (digite 'sair' para desconectar)")
     nome_usuario = input("Digite seu nome de usuário: ")
     cliente.sendall(nome_usuario.encode()) # Envia o nome primeiro
 

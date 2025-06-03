@@ -44,8 +44,7 @@ def lidar_com_cliente(conexao, endereco):
         
         print(f'{endereco} identificado como: {nome_usuario_atual}')
         
-        transmitir_mensagem(f"entrou no chat!", conexao, nome_usuario_atual) # Ou use "Sistema" como nome_do_remetente
-
+        transmitir_mensagem(f"entrou no chat!", conexao, nome_usuario_atual) 
         while True:
             dados = conexao.recv(1024)
             if not dados: # Cliente desconectou
@@ -63,12 +62,11 @@ def lidar_com_cliente(conexao, endereco):
     finally:
         if conexao in clientes_conectados:
             clientes_conectados.remove(conexao)
-        # Pega o nome do usuário que está saindo do dicionário
         nome_que_saiu = clientes_info.pop(conexao, None) # Remove do dicionário e retorna o nome
         
-        if nome_que_saiu: # Se o nome foi encontrado
+        if nome_que_saiu: 
             print(f"Conexão com {nome_que_saiu} ({endereco}) fechada.")
-            transmitir_mensagem(f"saiu do chat.", None, nome_que_saiu) # Envia para todos os restantes
+            transmitir_mensagem(f"saiu do chat.", None, nome_que_saiu)
         else:
             print(f"Conexão com {endereco} (sem nome identificado) fechada.")
         
